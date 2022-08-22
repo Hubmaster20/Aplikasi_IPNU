@@ -1,0 +1,125 @@
+{% include "style_atas_pac.html" %}
+{% include "sub_menu_pac.html" %}
+            <div class="row">
+              <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-users"></i> PILIH PIMPINAN <br><small>SURAT PERINTAH</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <form method="get">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Pimpinan</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select class="select2_multiple form-control" multiple="multiple" name="cari" onchange="this.form.submit();">
+                            {% for select in select_pimpinan %}
+                            <option value="{{select.nik}}">{{select.Nama}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                  </form>
+                  {% for tampil_p in data %}
+                  <div align="center">
+                    <img src="{{ tampil_p.foto.url }}" style="width: 150px"><br>
+                    <small>Foto Pimpinan</small>
+                    <hr>
+                    <h4><small>Skretaris Pimpinan</small><br>
+                    {{tampil_p.skretaris}}</h4>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% for tampil in data %}
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-upload"></i> INPUT DATA</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <input type="hidden" name="nik" value="{{tampil.nik}}">
+                      <input type="hidden" name="nama_pimpinan" value="{{tampil.Nama}}">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nomor Surat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="nomor_surat" placeholder="Enter Nomor Surat Perintah" maxlength="16">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Surat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="nama_surat" placeholder="Enter Nama Surat">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Perihal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="perihal" placeholder="Enter Perihal" rows="3"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi Surat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="deskripsi" placeholder="Enter Deskripsi Surat Perintah" rows="3"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Hari <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="hari" placeholder="Enter Hari">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tanggal" maxlength="12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Acara<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tempat" placeholder="Enter Tempat Acara">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Acara <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="acara" placeholder="Enter Acara Acara">
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Upload Surat</button>
+                          <button class="btn btn-primary" type="reset"><i class="fa fa-repeat"></i> Reset</button>
+                          <a href="{% url 'surat' %}" class="btn btn-danger">
+                           <i class="fa fa-close"></i> Cancel
+                          </a>
+						  
+                          
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            
+{% include "style_bawah_pac.html" %}

@@ -1,0 +1,78 @@
+{% include "style_atas.html" %}
+{% include "sub_menu.html" %}
+            <div class="row">
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-upload"></i> EDIT DATA</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">NIK <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="nik" placeholder="Enter NIK (PC)" maxlength="16" value="{{edit_data.nik}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Lengkap <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="nama_pembina" placeholder="Enter Nama Lengkap" value="{{edit_data.nama_pembina}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Bidang <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="bidang" placeholder="Enter Nama Bidang" value="{{edit_data.bidang}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">No-HP <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="nohp" placeholder="Enter No-Hp" maxlength="12" value="{{edit_data.nohp}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Alamat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="alamat" placeholder="Enter Alamat Lengkap" value="{{edit_data.alamat}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Jenis Kelamin <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="jk">
+                            <option>{{edit_data.jk}}</option>
+                            <option value="">Select</option>
+                            <option>Laki-Laki</option><option>Perempuan</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                          <a href="{% url 'pembina' %}" class="btn btn-danger">
+                           <i class="fa fa-close"></i> Cancel
+                          </a>
+						  
+                          
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+{% include "style_bawah.html" %}

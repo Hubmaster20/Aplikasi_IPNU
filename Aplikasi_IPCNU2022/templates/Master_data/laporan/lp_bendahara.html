@@ -1,0 +1,33 @@
+ <link rel="stylesheet" type="text/css" href="/static/print/style.css">
+                   <div id="container">
+  <h1 align="center"><strong style="font-family:'Times New Roman', Times, serif">LAPORAN DATA BENDAHARA IPNU</strong></h1>
+  <div id="body">
+            <table class="table table-bordered data-table" style="width:100%" border="1">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>NIK</th>
+                          <th>Nama Lengkap</th>
+                          <th>Jenis Kelamin</th>
+                          <th>Alamat</th>
+                          <th>No-hp</th>
+                          <th>Jabatan</th>
+                        </tr>
+                      </thead>
+
+                      {% for tampil in data %}
+                      <tbody>
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.nik}}</td>
+                          <td>{{tampil.nama}}</td>
+                          <td>{{tampil.jk}}</td>
+                          <td>{{tampil.alamat}}</td>
+                          <td>{{tampil.nohp}}</td>
+                          <td>{{tampil.jabatan}}</td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>

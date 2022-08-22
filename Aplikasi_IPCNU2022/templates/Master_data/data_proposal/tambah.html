@@ -1,0 +1,69 @@
+{% include "style_atas.html" %}
+{% include "sub_menu.html" %}
+            <div class="row">
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-upload"></i> INPUT DATA PROPOSAL</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="nama_proposal" placeholder="Enter Nama Proposal">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tema Pengajuan <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tema" placeholder="Enter Tema" rows="3"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tujuan Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tujuan_proposal" placeholder="Enter Tujuan Proposal">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Upload File Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="file" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="upload_proposal">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tanggal">
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                          <button class="btn btn-primary" type="reset"><i class="fa fa-repeat"></i> Reset</button>
+                          <a href="{% url 'proposal' %}" class="btn btn-danger">
+                           <i class="fa fa-close"></i> Cancel
+                          </a>
+						  
+                          
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+{% include "style_bawah.html" %}

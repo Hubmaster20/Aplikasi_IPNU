@@ -1,0 +1,122 @@
+{% if data %}
+{% for login in data %}
+{% include "Master_anggota/style_atas.html" %}
+{% include "Master_anggota/sub_menu.html" %}
+
+{% if messages %}
+{% for info in messages %}
+<!-- <script>alert('{{info}}');location='{% url "proposal" %}';</script> -->
+<div class="alert alert-info" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Success:</span>  
+  {{info}}
+  <form method="get" action="{% url 'proses_login' %}">
+  <input type="hidden" name="id_anggota" value="{{id_anggota}}">
+  <button class="btn btn-danger"><i class="fa fa-mail-reply"></i> Ok.!</button>
+  </form>
+</div>
+{% endfor %}
+{% endif %}
+
+
+            <div class="row">
+              <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-file-text"></i> INFORMASI PROPOSAL</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">              
+                      {% for tampil in data_proposal %}
+                      <p class="text-muted font-13 m-b-30">
+                      <i class="fa fa-check"></i> <b class="text-danger">Proposal {{tampil.tema}}</b>
+                    </p>
+                    <hr>
+                            <a href="{{ tampil.upload_proposal.url }}" title="Chek File" target="_blank">
+                              <i class="fa fa-download"></i> Download File Proposal 
+                              / <small>{{tampil.tanggal}}</small>
+                            </a>                    
+
+                      
+                      {% endfor %}
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-file-text"></i> PENGAJUAN PROPOSAL</h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Jenis Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="jenis_proposal" required>
+                            <option value="">Pilih Jenis</option>
+                            {% for select in data_proposal %}
+                            <option>{{select.nama_proposal}}</option>
+                            {% endfor%}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Anggota <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" readonly="" class="form-control col-md-7 col-xs-12" name="nama_anggota" value="{{nama_anggota}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tema Pengajuan <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tema" placeholder="Enter Tema" rows="3"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tujuan Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="tujuan_proposal" placeholder="Enter Tujuan Proposal">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Upload File Proposal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="file" id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="upload_proposal">
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                          <button class="btn btn-primary" type="reset"><i class="fa fa-repeat"></i> Reset</button>
+                          
+                        </div>
+                      </div>
+
+                    </form>
+                    <h4><i class="fa fa-folder"></i> Check Pengajuan Proposal</h4>
+                      <form method="get" action="{% url 'check_pengajuan' %}">
+                        <input type="hidden" name="id_anggota" value="{{id_anggota}}">
+                        <button class="btn btn-warning"><i class="fa fa-check"></i> Check Pengajuan Proposal.!</button>
+                        </form>
+              </div>
+          </div>					
+
+        </div>
+        </div>
+        </div>
+        </div>
+
+{% include "Master_anggota/style_bawah.html" %}
+{% endfor %}
+{% else %}
+<script>alert('Maaf Username Atau Password Anda Salah, Silakan Hubungi Operator...!');location='{% url "Login_anggota" %}';</script>
+{% endif %}

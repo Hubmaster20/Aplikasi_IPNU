@@ -1,0 +1,124 @@
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
+              <div class="menu_section ">
+                <h3>MENU STYLE</h3>
+                <ul class="nav side-menu">
+                  <li><a href="{% url 'Home' %}"><i class="fa fa-home"></i> Home</a>
+                  </li>
+                  <!-- <li><a href="{% url 'pimpinan' %}"><i class="fa fa-users"></i> Data Pimpinan</a>
+                  </li> -->
+                  <li><a><i class="fa fa-edit"></i> Master Data <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'surat' %}">Surat Perintah</a></li>
+                      <li><a href="{% url 'anggota' %}">Data Anggota</a></li>
+                      <li><a href="{% url 'kegiatan' %}">Data Kegiatan</a></li>
+                      <li><a href="{% url 'pembina' %}">Data Pembina</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{% url 'organisasi' %}"><i class="fa fa-paw"></i> Form Organisasi</a>
+                  </li>                  
+                  <li><a><i class="fa fa-desktop"></i> Master (PC)<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'pimpinan' %}">Data Pimpinan</a></li>
+                      <li><a href="{% url 'skretaris' %}">Data Skretaris</a></li>
+                      <li><a href="{% url 'bendahara' %}">Data Bendahara</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{% url 'keuangan' %}"><i class="fa fa-anchor"></i> Form Keuangan</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Informasi Pengajuan Proposal</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-bug"></i> Manster Pengajuan <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'pengajuan' %}">Form Pengajuan</a></li>
+                      <li><a href="{% url 'proposal' %}">Form Table Proposal</a></li>                      
+                    </ul>
+                  </li>                  
+                  <li><a href="{% url 'Menu_laporan' %}"><i class="fa fa-laptop"></i> Menu Laporan <span class="label label-success pull-right">Proses</span></a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="/static/logo.png" alt="">{{user}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+                
+                <li class="">
+                  <a href="{% url 'check_saran' %}"><i class="fa fa-check"></i> Check Saran</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="row top_tiles">
+              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-users"></i></div>
+                  <div class="count">{{jumlah_kegiatan}}</div>
+                  <h3>Jumlah Kegiatan</h3>
+                  <p>Kegiatan keseluruhan.</p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-user"></i></div>
+                  <div class="count">{{jumlah_pembina}}</div>
+                  <h3>Jumlah Pembina</h3>
+                  <p>Pembina keseluruhan.</p>
+                </div>
+              </div>
+              <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-file"></i></div>
+                  <div class="count">{{jumlah_pengajuan_proposal}}</div>
+                  <h3>Jumlah Pengajuan Proposal</h3>
+                  <p>Pengajuan Proposal keseluruhan. <a href="{% url 'pengajuan' %}"><i class="fa fa-check-square-o"></i> <u class="text-danger">Check Pengajuan Proposal</u></a></p>
+                </div>
+              </div>
+
+            <div class="clearfix"></div>

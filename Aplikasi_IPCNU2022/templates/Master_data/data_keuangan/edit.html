@@ -1,0 +1,60 @@
+{% include "style_atas.html" %}
+{% include "sub_menu.html" %}
+            <div class="row">
+              <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-upload"></i> EDIT DATA KEUANGAN PAC</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nomor Keuangan <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="nomor_keuangan" placeholder="Enter Nomor Keuangan" maxlength="16" value="{{edit_data.nomor_keuangan}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Keuangan<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="nama_keuangan" placeholder="Enter Nama Keuangan" value="{{edit_data.nama_keuangan}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Jumlah Keuangan<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" name="jumlah" placeholder="Enter Jumlah Keuangan" value="{{edit_data.jumlah}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="birthday" class="form-control col-md-7 col-xs-12" required="required" name="keterangan" placeholder="Enter Keterangan" rows="8">{{edit_data.keterangan}}</textarea>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+                          <a href="{% url 'keuangan' %}" class="btn btn-danger">
+                           <i class="fa fa-close"></i> Cancel
+                          </a>
+              
+                          
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+{% include "style_bawah.html" %}

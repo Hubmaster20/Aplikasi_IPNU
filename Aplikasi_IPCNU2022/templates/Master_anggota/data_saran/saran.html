@@ -1,0 +1,69 @@
+{% if data %}
+{% for login in data %}
+{% include "Master_anggota/style_atas.html" %}
+{% include "Master_anggota/sub_menu.html" %}
+
+            <div class="row">
+               <div class="col-md-6">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2><i class="fa fa-envelope-square"></i> FORM SARAN KE- <i class="fa fa-user"></i> (PAC)</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <ul class="list-unstyled msg_list">
+                    {% for tampil in data_saran %}
+                    <li>
+                      <a href="">
+                        <span class="image">
+                          <!-- <img src="{{ foto.url }}" alt="img" /> -->
+                          <i class="fa fa-wechat"></i>
+                        </span>
+                        <span>
+                          <span>{{tampil.nama_anggota}}</span>
+                          <span class="time">
+                            <i class="fa fa-check"></i> 
+                          Saran 
+                        </span>
+                        </span>
+                        <span class="message">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {{tampil.saran}}
+                        </span>
+                      </a>                      
+                    </li>
+                    <div align="right">
+                      <a href="{% url 'Hapus_saran_anggota' tampil.id %}" class="btn btn-xs btn-default" title="Hapus">
+                              <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>    
+                    </div>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <table border="1" class="table">
+                  <tr>
+                    <td>
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="id_anggota" value="{{id_anggota}}">
+                  <input type="hidden" name="nama_anggota" value="{{nama_anggota}}">
+                  <textarea name="saran" placeholder="Enter Saran...!" required class="form-control" rows="5"></textarea>
+                  <button type="submit" style="width: 100%" class="btn btn-xs btn-success"><i class="fa fa-level-up"></i> Send Messages</button>
+                </form>
+              </td>
+            </tr>
+              </table>
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+
+{% include "Master_anggota/style_bawah.html" %}
+{% endfor %}
+{% else %}
+<script>alert('Maaf Username Atau Password Anda Salah, Silakan Hubungi Operator...!');location='{% url "Login_anggota" %}';</script>
+{% endif %}

@@ -1,0 +1,55 @@
+{% include "style_atas.html" %}
+{% include "sub_menu.html" %}
+{% if messages %}
+{% for info in messages %}
+<script>alert('{{info}}');location='{% url "check_saran" %}';</script>
+{% endfor %}
+{% endif %}
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-file-text"></i> FORM DATA SARAN</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted font-13 m-b-30">
+                      Form ini dapat menampilkan data-data yang sudah dikelola, sehingga pengguna dapat mengecek data atau informasi melalui tampilan form ini.
+                    </p>
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Anggota</th>
+                          <th>Saran</th>                          
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+
+                      {% for tampil in data %}
+                      <tbody>
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.nama_anggota}}</td>
+                          <td>{{tampil.saran}}</td>
+                          <td>
+                            <a href="{% url 'Hapus_saran_data' tampil.id %}" class="btn btn-xs btn-danger" title="Hapus" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')">
+                              <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>    
+                          <form method="get" action="{% url 'Add_saran_anggota1' %}">
+                            <input type="hidden" name="balas_saran" value="{{tampil.id_anggota}}">
+                              <button type="submit" class="btn btn-xs btn-default"><i class="fa fa-plus-square"></i> Balas Saran</button>
+                            </form>
+                      </td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+					
+
+        </div>
+{% include "style_bawah.html" %}

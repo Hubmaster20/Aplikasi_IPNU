@@ -1,0 +1,71 @@
+
+{% if data %}
+{% for login in data %}
+{% include "Master_anggota/style_atas.html" %}
+{% include "Master_anggota/sub_menu.html" %}
+            <div class="row top_tiles">
+              <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-user"></i></div>
+                  <div class="count">Pengurus PAC</div>
+                  <h3><i class="fa fa-check"></i> {{jabatan}}</h3>
+                  <div align="center">
+                  <p class="panel">
+                    <img src="{{ foto.url }}" style="width: 250px">
+                    <p><i class="fa fa-phone"></i> : {{nohp}}</p>
+                  </p>
+                </div>
+                </div>
+              </div>
+            <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-pie-chart"></i></div>
+                  <div class="count">JUMLAH ANGGOTA</div>
+                  <h3><i class="fa fa-level-up"></i> Jumlah : {{jumlah}}</h3>
+                </div>
+                <!-- jumlah kegiatan -->
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-pie-chart"></i></div>
+                  <div class="count">JUMLAH KEGIATAN</div>
+                  <h3><i class="fa fa-level-up"></i> Jumlah : {{jumlah_kegiatan}}</h3>
+                </div>
+              </div>
+              <!-- status pengajuan proposal -->
+              
+              <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-file"></i></div>
+                  <div class="count">STATUS PENGAJUAN PROPOSAL</div>
+                  {% for tampil in check_proposal %}
+                  {% if tampil.status == '' %}
+                            <a class="btn btn-xs btn-info"><i class="fa fa-check"></i> Pengajuan Belum Di Proses</a>
+                            {% elif tampil.status == 'Acc' %}
+                            <a class="btn btn-xs btn-success"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% elif tampil.status == 'Revisi' %}
+                            <a class="btn btn-xs btn-warning"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% elif tampil.status == 'Di Tolak' %}
+                            <a class="btn btn-xs btn-danger"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Selamat Datang <small>Users</small>1</h2>
+                    <div class="clearfix"></div>
+                    <h3>SELAMAT DATANG DI WEBSITE PENGURUS PAC</h3>
+                  </div>
+                </div>
+              </div>
+
+					
+
+        </div>
+{% include "Master_anggota/style_bawah.html" %}
+{% endfor %}
+{% else %}
+<script>alert('Maaf Username Atau Password Anda Salah, Silakan Hubungi Operator...!');location='{% url "Login_anggota" %}';</script>
+{% endif %}

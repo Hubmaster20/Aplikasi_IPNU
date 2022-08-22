@@ -1,0 +1,33 @@
+ <link rel="stylesheet" type="text/css" href="/static/print/style.css">
+                   <div id="container">
+  <h1 align="center"><strong style="font-family:'Times New Roman', Times, serif">LAPORAN DATA ORGANISASI IPNU</strong></h1>
+  <div id="body">
+            <table class="table table-bordered data-table" style="width:100%" border="1">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Kode Organisasi</th>
+                          <th>Nama Organisasi</th>
+                          <th>Nama Pimpinan</th>
+                          <th>Nama Skretaris</th>
+                          <td>Nama Anggota</td>
+                          <th>Deskripsi</th>
+                        </tr>
+                      </thead>
+
+                      {% for tampil in data %}
+                      <tbody>
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.kode_organisasi}}</td>
+                          <td>{{tampil.nama_organisasi}}</td>
+                          <td>{{tampil.nama_pimpinan}}</td>
+                          <td>{{tampil.nama_skretaris}}</td>
+                          <td>{{tampil.nama_anggota}}</td>
+                          <td>{{tampil.deskripsi}}</td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>

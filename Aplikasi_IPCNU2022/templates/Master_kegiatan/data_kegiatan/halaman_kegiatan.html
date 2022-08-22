@@ -1,0 +1,42 @@
+{% include "style_atas_kegiatan.html" %}
+{% include "sub_menu_kegiatan.html" %}
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-file-text"></i> INFORMASI KEGIATAN ANGGOTA IPNU</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+              {% for tampil in data %}
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                      <div class="product-image">
+                        <a href="{{ tampil.foto.url }}" target="_blank" title="download foto">
+                        <img src="{{ tampil.foto.url }}" alt="..." style="width:400px; height: 350px;">
+                      </a>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
+
+                      <h3 class="prod_title">{{tampil.nama_kegiatan}}</h3>
+
+                      <p>{{tampil.deskripsi}}</p>
+                      <br />
+
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+
+                  </div>
+                </div>
+              </div>
+
+					
+
+        </div>
+{% include "style_bawah_kegiatan.html" %}

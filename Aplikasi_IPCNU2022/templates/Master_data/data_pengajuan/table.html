@@ -1,0 +1,80 @@
+{% include "style_atas.html" %}
+{% include "sub_menu.html" %}
+{% if messages %}
+{% for info in messages %}
+<script>alert('{{info}}');location='{% url "pengajuan" %}';</script>
+{% endfor %}
+{% endif %}
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-file-text"></i> FORM DATA PENGAJUAN PROPOSAL IPNU</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a href="{% url 'tambah_pengajuan' %}" class="btn btn-round btn-default"><i class="fa fa-plus-square"></i> Tambah Data</a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted font-13 m-b-30">
+                      Form ini dapat menampilkan data-data yang sudah dikelola, sehingga pengguna dapat mengecek data atau informasi melalui tampilan form ini.
+                    </p>
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Jenis Proposal</th>
+                          <th>Nama Anggota</th>
+                          <th>Tema</th>
+                          <th>Tujuan Proposal</th>
+                          <th>Upload Proposal</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+
+                      {% for tampil in data %}
+                      <tbody>
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{tampil.jenis_proposal}}</td>
+                          <td>{{tampil.nama_anggota}}</td>
+                          <td>{{tampil.tema}}</td>
+                          <td>{{tampil.tujuan_proposal}}</td>                          
+                          <td>
+                            <a href="{{ tampil.upload_proposal.url }}" title="Chek File" target="_blank">
+                              <i class="fa fa-download"></i> Download File Proposal
+                            </a>
+                          </td>
+                          <td>
+                            {% if tampil.status == '' %}
+                            <a class="btn btn-xs btn-info"><i class="fa fa-check"></i> Pengajuan Belum Di Proses</a>
+                            {% elif tampil.status == 'Acc' %}
+                            <a class="btn btn-xs btn-success"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% elif tampil.status == 'Revisi' %}
+                            <a class="btn btn-xs btn-warning"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% elif tampil.status == 'Di Tolak' %}
+                            <a class="btn btn-xs btn-danger"> {{tampil.status}} <i class="fa fa-check"></i></a>
+                            {% endif %}
+                          </td>
+                          <td>
+<a href="{% url 'edit_pengajuan' tampil.id %}" class="btn btn-xs btn-success" title="Edit" onclick="return confirm('Apakah Anda Yakin Ingin Mengedit Data')">
+      <i class="ace-icon fa fa-pencil bigger-130"></i>
+      </a>
+<a href="{% url 'hapus_pengajuan' tampil.id %}" class="btn btn-xs btn-danger" title="Hapus" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')">
+      <i class="ace-icon fa fa-trash-o bigger-130"></i>
+      </a>    
+                      </td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+					
+
+        </div>
+{% include "style_bawah.html" %}
